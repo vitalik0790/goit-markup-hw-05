@@ -23,6 +23,7 @@ img {
   --title-text-color: rgba(33, 33, 33, 1);
   --text-hover-focus: rgba(33, 150, 243, 1);
   --white-text-background: rgba(255, 255, 255, 1);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -39,6 +40,13 @@ body {
 
 .header {
   border-bottom: 1px solid #ececec;
+}
+
+.container {
+  width: 1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
 }
 
 /* ЛОГО */
@@ -65,30 +73,79 @@ body {
 
 /* НАВІГАЦІЯ */
 
-.special-link {
-  color: rgba(33, 150, 243, 1);
-  text-decoration: none;
+.nav-menu {
+  display: flex;
+  max-width: 294px;
+}
+
+.nav-menu .link {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   letter-spacing: 0.02em;
-}
-
-.link {
   color: var(--title-text-color);
   text-decoration: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.02em;
+  position: relative;
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
-.link:hover,
-.link:focus {
+.nav-menu .special {
   color: var(--text-hover-focus);
 }
+
+.nav-menu .link:hover,
+.nav-menu .link:focus {
+  color: var(--text-hover-focus);
+  transition: 250ms var(--time-distribution-function);
+}
+
+.nav-menu .link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+
+  background: var(--text-hover-focus);
+  border-radius: 2px;
+  transform: scaleX(0);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu .link:hover::after,
+.nav-menu .link:focus::after {
+  transform: scaleX(1);
+}
+
+.nav-menu .special::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+
+  background: var(--text-hover-focus);
+  border-radius: 2px;
+  transform: scaleX(1);
+}
+
+.nav-menu .link:hover::after,
+.nav-menu .link:focus::after {
+  transform: scaleX(1);
+}
+
+nav ul li:not(:last-child) {
+  margin-right: 50px;
+}
+
+/* КОНТАКТИ */
 
 .auth-item {
   color: var(--main-text-color);
@@ -102,13 +159,7 @@ body {
 .auth-item:hover,
 .auth-item:focus {
   color: var(--text-hover-focus);
-}
-
-.container {
-  width: 1200px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin: 0 auto;
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-container {
@@ -117,22 +168,14 @@ body {
   align-items: center;
 }
 
-.header {
+/* .header {
   padding-top: 24px;
   padding-bottom: 25px;
-}
-
-.nav-menu {
-  display: flex;
-}
+} */
 
 .auth-nav {
   display: flex;
   margin-left: auto;
-}
-
-nav ul li:not(:last-child) {
-  margin-right: 50px;
 }
 
 .auth-item {
@@ -150,8 +193,10 @@ nav ul li:not(:last-child) {
   fill: var(--primary-text-color);
 }
 
-.auth-item:hover .auth-icon {
+.auth-item:hover .auth-icon,
+.auth-item:focus .auth-icon {
   fill: var(--text-hover-focus);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Кнопки */
@@ -178,11 +223,13 @@ nav ul li:not(:last-child) {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
 .button:focus {
   color: var(--white-text-background);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .main-section {
@@ -236,7 +283,8 @@ nav ul li:not(:last-child) {
   box-sizing: border-box;
 }
 
-.li-item:hover {
+.li-item:hover,
+.li-item:focus {
   background: #ffffff;
   border: 1px solid #eeeeee;
   box-sizing: border-box;
@@ -279,8 +327,10 @@ nav ul li:not(:last-child) {
   padding: 63px 24px;
 }
 
-.li-item:hover .paragraph {
+.li-item:hover .paragraph,
+.li-item:focus .paragraph {
   transform: translateY(0);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Підвал */
@@ -397,8 +447,10 @@ nav ul li:not(:last-child) {
   align-items: center;
 }
 
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus {
   background-color: var(--text-hover-focus);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link .icon {

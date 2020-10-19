@@ -27,6 +27,7 @@ img {
   --main-footer-background-color: rgba(47, 48, 58, 1);
   --white-color: #ffffff;
   --secondary-text-color: rgba(255, 255, 255, 1);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* var(--primary-text-color)  */
@@ -43,6 +44,13 @@ body {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.03em;
   /* max-width: 1600px; */
+}
+
+.container {
+  width: 1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
 }
 
 /* LOGO */
@@ -72,14 +80,9 @@ body {
 
 /* NAVIGATION */
 
-.special-link {
-  color: rgba(33, 150, 243, 1);
-  text-decoration: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
+.nav-menu {
+  display: flex;
+  max-width: 294px;
 }
 
 .nav-menu .link {
@@ -90,12 +93,66 @@ body {
   letter-spacing: 0.02em;
   color: var(--title-text-color);
   text-decoration: none;
+  position: relative;
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.nav-menu .special {
+  color: var(--text-hover-focus);
 }
 
 .nav-menu .link:hover,
 .nav-menu .link:focus {
   color: var(--text-hover-focus);
+  transition: 250ms var(--time-distribution-function);
 }
+
+.nav-menu .link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+
+  background: var(--text-hover-focus);
+  border-radius: 2px;
+  transform: scaleX(0);
+  --time-distribution-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu .link:hover::after,
+.nav-menu .link:focus::after {
+  transform: scaleX(1);
+}
+
+.nav-menu .special::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+
+  background: var(--text-hover-focus);
+  border-radius: 2px;
+  transform: scaleX(1);
+}
+
+.nav-menu .link:hover::after,
+.nav-menu .link:focus::after {
+  transform: scaleX(1);
+}
+
+nav ul li:not(:last-child) {
+  margin-right: 50px;
+}
+
+/* КОНТАКТИ */
 
 .auth-item {
   color: var(--primary-text-color);
@@ -109,13 +166,7 @@ body {
 .auth-item:hover,
 .auth-item:focus {
   color: var(--text-hover-focus);
-}
-
-.container {
-  width: 1200px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin: 0 auto;
+  transition: 250ms var(--time-distribution-function);
 }
 
 .header-container {
@@ -124,22 +175,14 @@ body {
   align-items: center;
 }
 
-.header {
+/* .header {
   padding-top: 24px;
   padding-bottom: 25px;
-}
-
-.nav-menu {
-  display: flex;
-}
+} */
 
 .auth-nav {
   display: flex;
   margin-left: auto;
-}
-
-nav ul li:not(:last-child) {
-  margin-right: 50px;
 }
 
 .auth-item {
@@ -409,12 +452,16 @@ nav ul li:not(:last-child) {
   height: 20px;
 }
 
-.ourteam-social-link:hover {
+.ourteam-social-link:hover,
+..ourteam-social-link:focus {
   background-color: var(--text-hover-focus);
+  transition: 250ms var(--time-distribution-function);
 }
 
-.ourteam-social-link:hover .icon {
+.ourteam-social-link:hover .icon,
+.ourteam-social-link:focus .icon {
   fill: var(--secondary-text-color);
+  transition: 250ms var(--time-distribution-function);
 }
 
 .icon {
@@ -455,10 +502,7 @@ nav ul li:not(:last-child) {
   align-items: center;
 }
 
-.clients-item:hover {
-  border-color: #2196f3;
-}
-
+.clients-item:hover,
 .clients-item:focus {
   border-color: #2196f3;
 }
@@ -467,12 +511,10 @@ nav ul li:not(:last-child) {
   fill: rgba(175, 177, 184, 1);
 }
 
-.clients-item:hover .clients-icon {
-  fill: var(--text-hover-focus);
-}
-
+.clients-item:hover .clients-icon,
 .clients-item:focus .clients-icon {
   fill: var(--text-hover-focus);
+  transition: 250ms var(--time-distribution-function);
 }
 
 /* ПІДВАЛ*/
@@ -585,13 +627,17 @@ nav ul li:not(:last-child) {
   align-items: center;
 }
 
+.footer-link:hover,
 .footer-link:hover {
   background-color: var(--text-hover-focus);
+  transition: 250ms var(--time-distribution-function);
 }
 
 .footer-link .icon {
   fill: #ffffff;
 }
+
+/* BACKDROP */
 
 .backdrop {
   position: fixed;
@@ -600,6 +646,7 @@ nav ul li:not(:last-child) {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  transition: all 1000ms linear;
 }
 
 .modal {
@@ -614,4 +661,27 @@ nav ul li:not(:last-child) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.close-modal {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

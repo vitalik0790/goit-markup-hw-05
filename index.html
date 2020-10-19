@@ -20,9 +20,9 @@
             
               <nav>
                 <ul class="nav-menu list">
-                  <li><a href="./index.html" class="special-link">Студия</a></li>
-                  <li><a href="./portfolio.html" class="link">Портфолио</a></li>
-                  <li><a href="#Контакты" class="link">Контакты</a></li>
+                  <li class="nav-li"><a href="./index.html" class="special link">Студия</a></li>
+                  <li class="nav-li"><a href="./portfolio.html" class="link">Портфолио</a></li>
+                  <li class="nav-li"><a href="#Контакты" class="link">Контакты</a></li>
                 </ul>
               </nav>
             
@@ -48,7 +48,7 @@
       <main>
         <section class="main-section">
           <h1 class="main-title">Эффективные решения <br /> для вашего бизнеса</h1>
-          <button type="button" class="button">Заказать услугу</button>
+          <button type="button" data-modal-open class="button">Заказать услугу</button>
         </section>
 
       
@@ -352,16 +352,19 @@
           </div>
         </div>
       </footer>
-      <div class="backdrop">
+
+          <!-- BACKDROP -->
+
+      <div class="backdrop is-hidden" data-modal>
         <div class="modal">
-          <button class="close-modal">
-            <svg class="backdrop-icon" width="18" height="18">
-              <use href="./img/icon/sprite.svg#icon-close-modal"></use>
+          <button type="button" data-modal-close class="close-modal" data-modal-close>
+            <svg class="backdrop-icon" width="18px" height="18px">
+              <use href="./img/icons/sprite.svg#icon-close-modal"></use>
             </svg>
           </button>
         </div>
       </div>
-
+<script src="./js/modal.js"></script>
   </body>
 </html>
 
