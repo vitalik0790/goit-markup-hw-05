@@ -30,7 +30,7 @@ body {
   letter-spacing: 0.03em;
   background-color: var(--white-text-background);
   color: var(--main-text-color);
-  max-width: 1600px;
+  /* max-width: 1600px; */
 }
 
 .list {
